@@ -1,24 +1,24 @@
-// 내일 풀어볼것
-function solution(nums) {
-  let answer
-  let max = nums[0]
+function solution(arr) {
+  let anwser
+  let max = Number.MIN_SAFE_INTEGER
 
-  for (let i = 1; i < nums.length; i++) {
-    const n = nums[i]
+  for (let x of arr) {
+    let sum = x
       .toString()
       .split('')
-      .reduce((a, c) => a + parseInt(c, 10), 0)
+      .reduce((total, n) => total + parseInt(n, 10), 0)
 
-    if (n > max) {
-      answer = nums[i]
-      max = n
-    } else if (n === max) {
-      if (answer < nums[i]) answer = nums[i]
+    if (sum > max) {
+      max = sum
+      anwser = x
+    } else if (sum === max) {
+      if (x > anwser) anwser = x
     }
   }
-  return answer
+
+  return anwser
 }
 
-const numbers = [128, 460, 603, 40, 521, 137, 123]
+const arr = [128, 460, 603, 40, 521, 137, 123]
 
-console.log(solution(numbers))
+console.log(solution(arr))
